@@ -8,7 +8,7 @@
                 <div class="is-flex is-align-items-center is-justify-content-space-between">
                     <section>
                         <strong>
-                            00:00:00
+                            {{ tempoDcorrido }}
                         </strong>
                     </section>
                     <button class="button" @click="iniciar">
@@ -35,8 +35,21 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
     name: "Formulario",
+    data () {  
+        return {
+            tempoEmSugundos: 0
+        }
+    },
+    computed: {
+        tempoDcorrido () : string {
+            return new Date(this.tempoEmSugundos * 1000).toISOString().substring(19,11)
+        }
+    },
     methods: {
         iniciar () {
+            setInterval(() => {
+                this.tempoEmSugundos += 1
+            }, 1000)
             console.log('iniciando');
         },
         finalizar: () => {
