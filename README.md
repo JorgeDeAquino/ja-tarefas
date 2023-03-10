@@ -1,4 +1,4 @@
-# ja-tarefas
+<h1> JA Tarefas
 
 ## Project setup
 ```
